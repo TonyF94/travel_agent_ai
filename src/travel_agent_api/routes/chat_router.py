@@ -14,7 +14,7 @@ class ChatComplentionRequest(BaseModel):
             "messages": [
                 {
                 "role": "user",
-                "content": "Vorrei organizzare un viaggio a Roma"
+                "content": "Vorrei organizzare un viaggio nelle Filippine"
                 }
             ]
         }
@@ -39,10 +39,9 @@ conversazione
 # Elaborazione dei messaggi e generazione della risposta
     response = agent.run(messages=request.messages)
 
-# Tracing
     print("*" * 80)
     print("chat_completion")
     print("*" * 80)
-# print("request messages: ", request.messages)
-# print("response: ", response)
+    print("request messages: ", request.messages)
+    print("response: ", response)
     return response

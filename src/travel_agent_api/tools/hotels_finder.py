@@ -25,6 +25,7 @@ class HotelsInput(BaseModel):
 
 class HoltesInputSchema(BaseModel):
     params : HotelsInput
+    
 @tool(args_schema=HoltesInputSchema)
 def hotels_finder(params: HotelsInput):
     """

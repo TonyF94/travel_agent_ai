@@ -1,7 +1,7 @@
 [project]
 name = "travel-agent-api"
 version = "0.1.0"
-description = ""
+description = "Backend API with FastAPI and LangChain to power an intelligent travel assistant using advanced language models."
 authors = [
     {name = "Tony Forgetta",email = "tonyforgetta94@gmail.com"}
 ]
