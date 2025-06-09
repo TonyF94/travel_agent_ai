@@ -2,6 +2,7 @@ from langchain_core.tools import tool
 from langchain_openai import ChatOpenAI
 from langchain.prompts import ChatPromptTemplate
 
+# è decorata con @tool, quindi può essere usata da un agente LangChain
 @tool
 def chain_historical_expert(input_text: str) -> str:
     """
@@ -23,19 +24,12 @@ def chain_historical_expert(input_text: str) -> str:
     Always strive to be approachable and helpful, offering the
     most accurate and useful information possible to users.
     """
-    prompt = ChatPromptTemplate([
-        ("system" , "{system_prompt}"),
-        ("user" , "{input}")
-    ])
 
+    prompt = ChatPromptTemplate([("system" , "{system_prompt}"),("user" , "{input}")])
     chain = prompt | model
-    result = chain.invoke({
-        "input":input_text,
-        "system_prompt":system_prompt
-    })
+    result = chain.invoke({"input":input_text,"system_prompt":system_prompt})
 
-    # Tracing
-    print("*" * 80)
-    print("chain_historical_expert")
-    print("*" * 80)
+    # print("*" * 80)
+    # print("chain_historical_expert")
+    # print("*" * 80)
     return result

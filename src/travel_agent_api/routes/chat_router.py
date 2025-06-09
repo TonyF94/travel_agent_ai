@@ -39,9 +39,9 @@ conversazione
 # Elaborazione dei messaggi e generazione della risposta
     response = agent.run(messages=request.messages)
 
-    print("*" * 80)
-    print("chat_completion")
-    print("*" * 80)
-    print("request messages: ", request.messages)
-    print("response: ", response)
+    # print("*" * 80)
+    # print("chat_completion")
+    # print("*" * 80)
+    # print("request messages: ", request.messages)
+    # print("response: ", response)
     return response

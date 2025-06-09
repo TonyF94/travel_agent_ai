@@ -5,13 +5,17 @@ from serpapi import GoogleSearch
 from pydantic import BaseModel , Field
 from typing import Optional
 load_dotenv()
+
+#struttura dei dati in ingresso definita attraverso pydantic: definisce tutti i parametri necessari per una ricerca voli:
 class FlightsInput(BaseModel):
-    departure_airport: str = Field(description="The departure airport code (IATA).")
-    arrival_airport: str = Field(description="The arrival airport code (IATA).")
-    outbound_date: str = Field(description="The outbound date (YYYY-MM-DD) e.g. 2024-12-13.")
-    return_date: str = Field(description="The return date (YYYY-MM-DD) e.g. 2024-12-19.")
-    adults: Optional[int] = Field(1, description="The number of adults. Defaults to 1.")
-    children: Optional[int] = Field(0, description="The number of children. Defaults to 0.")
+    departure_airport: str = Field(description="The departure airport code (IATA).") #aereoporto di partenza
+    arrival_airport: str = Field(description="The arrival airport code (IATA).") #codice aereoporto
+    outbound_date: str = Field(description="The outbound date (YYYY-MM-DD) e.g. 2024-12-13.") #data di partenza
+    return_date: str = Field(description="The return date (YYYY-MM-DD) e.g. 2024-12-19.") #data di ritorno
+    adults: Optional[int] = Field(1, description="The number of adults. Defaults to 1.") #numero di adulti default 1
+    children: Optional[int] = Field(0, description="The number of children. Defaults to 0.") #numero di bambini default 0
+
+#gli dico che tutti i parametri definiti prima devono essere dentro il campo params
 class FlightsInputSchema(BaseModel):
     params : FlightsInput
 
@@ -46,10 +50,10 @@ def flights_finder(params: FlightsInput):
                 "children": params.children
             }
             search = GoogleSearch(params)
-            
-            print("*" * 80)
-            print("flights_finder")
-            print("*" * 80)
+
+            # print("*" * 80)
+            # print("flights_finder")
+            # print("*" * 80)
             return search.get_dict()
     except Exception as e:
         return str(e)
